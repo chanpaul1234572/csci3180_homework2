@@ -14,10 +14,10 @@ class Human(Player.Player):
                 col = int(str[2])
                 if row > 9 or row < 1 or col > 9 or col < 1:
                     print "invaild input!"
-                elif self.gameBoard[row][col] != 0:
+                elif self.gameBoard[row - 1][col - 1] != 0:
                     print "invaild input!"
                 else:
-                    return (row, col)
+                    return (row - 1, col - 1)
             else:
                 print "invaild input!"
             

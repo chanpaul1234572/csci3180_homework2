@@ -10,10 +10,10 @@ class Computer(Player):
         while True:
             row = random.randint(1, 9)
             col = random.randint(1, 9)
-            if self.gameBoard[row][col] == 0:
+            if self.gameBoard[row - 1][col - 1] == 0:
                 print row, col 
                 break
         print "Type the row and col to put the disc:", row, col
-        return (row, col)
+        return (row - 1, col - 1)
 
 

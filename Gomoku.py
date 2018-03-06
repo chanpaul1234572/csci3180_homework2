@@ -10,7 +10,7 @@ class Gomoku(object):
         self.player1 = 1
         self.player2 = 1
         self.turn = 1
-        w, h = 10, 10
+        w, h =9, 9
         self.gameBoard = [[0 for _ in range(w)] for _ in range(h)] 
         self.dev = 1
         '''for i in range(h):
@@ -23,16 +23,15 @@ class Gomoku(object):
         if playerNum == 3:
             self.player1 = Human.Human('O', self.gameBoard)
             self.player2 = Human.Human('X', self.gameBoard)
-            self.gameBoard =   [[1,2,1,2,1,2,1,2,1,2],
-                               [1,2,1,2,1,2,1,2,1,2],
-                               [1,2,1,2,1,2,1,2,1,2],
-                               [1,2,1,2,1,2,1,2,1,2],
-                               [2,1,2,1,2,1,2,1,2,1],
-                               [2,1,2,1,2,1,2,1,2,1],
-                               [2,1,2,1,2,1,2,1,2,1],
-                               [2,1,2,1,2,1,2,1,2,1],
-                               [1,2,1,2,1,2,1,2,2,2],
-                               [1,2,1,2,1,2,1,2,1,2],]
+            self.gameBoard =  [[1,2,1,2,1,2,1,2,1],
+                               [1,2,1,2,1,2,1,2,1],
+                               [1,2,1,2,1,2,1,2,1],
+                               [2,1,2,1,2,1,2,1,2],
+                               [2,1,2,1,2,1,2,1,2],
+                               [2,1,2,1,2,1,2,1,2],
+                               [2,1,2,1,2,1,2,1,2],
+                               [1,2,1,2,1,2,1,2,1],
+                               [1,2,1,2,1,2,1,2,1],]
         else:    
             if self.turn == 1:
                 if playerNum == 1:
@@ -89,10 +88,10 @@ class Gomoku(object):
         #self.gameBoard[2][3] = 2
         print(' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |')
         print('.....................................')
-        for i in range(1, 10):
-            numindex = str(i)
+        for i in range(0, 9):
+            numindex = str(i + 1)
             print numindex + '|',
-            for j in range(1, 10):
+            for j in range(0, 9):
                 if self.gameBoard[i][j] == 0:
                     print ' ',
                 elif self.gameBoard[i][j] == 1:
@@ -105,8 +104,8 @@ class Gomoku(object):
     def checkWin(self):
         #check for row
         win = 0
-        for i in range(1, 10):
-            for j in range(1, 6):
+        for i in range(0, 9):
+            for j in range(0, 5):
                 if self.gameBoard[i][j] == 1 and self.gameBoard[i][j + 1] == 1 and self.gameBoard[i][j + 2] == 1 and self.gameBoard[i][j + 3] == 1 and self.gameBoard[i][j + 4] == 1:
                     win = 1
                     break
@@ -114,8 +113,8 @@ class Gomoku(object):
                     win = 2
                     break
         #check for column
-        for i in range(1, 6):
-            for j in range(1, 10):
+        for i in range(0, 5):
+            for j in range(0, 9):
                 if self.gameBoard[i][j] == 1 and self.gameBoard[i + 1][j] == 1 and self.gameBoard[i + 2][j] == 1 and self.gameBoard[i + 3][j] == 1 and self.gameBoard[i + 4][j] == 1:
                     win = 1
                     break
@@ -123,8 +122,8 @@ class Gomoku(object):
                     win = 2
                     break
         #check for left diagonal
-        for i in range(1, 6):
-            for j in range(1, 6):
+        for i in range(0, 5):
+            for j in range(0, 5):
                 if self.gameBoard[i][j] == 1 and self.gameBoard[i + 1][j + 1] == 1 and self.gameBoard[i + 2][j + 2] == 1 and self.gameBoard[i + 3][j + 3] == 1 and self.gameBoard[i + 4][j + 4] == 1:
                     win = 1
                     break
@@ -132,9 +131,9 @@ class Gomoku(object):
                     win = 2
                     break
         #check for right diagonal
-        for i in range(1, 9):
-            for j in range(1, 6):
-                if i - 4 < 1:
+        for i in range(0, 8):
+            for j in range(0, 5):
+                if i - 4 < 0:
                     break
                 else:
                     if self.gameBoard[i][j] == 1 and self.gameBoard[i - 1][j + 1] == 1 and self.gameBoard[i - 2][j + 2] == 1 and self.gameBoard[i - 3][j + 3] == 1 and self.gameBoard[i - 4][j + 4] == 1:
@@ -146,8 +145,8 @@ class Gomoku(object):
         return win
     def checkTie(self):
         full = 1
-        for i in range(1, 10):
-            for j in range(1, 10):
+        for i in range(0 ,9):
+            for j in range(0 ,9):
                 if self.gameBoard[i][j] == 0:
                     return 0
         if self.checkWin() == 0:
