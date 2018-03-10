@@ -3,5 +3,6 @@
     "python.linting.pylintEnabled": true,
     "python.linting.pylintArgs": [
         "--rcfile=~/.pylintrc"
-    ]
+    ],
+    "python.pythonPath": "/usr/local/bin/python"
 }

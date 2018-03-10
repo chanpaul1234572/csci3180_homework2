@@ -15,10 +15,10 @@ class Weapon(object):
     def enhance():
         pass
     
-    def getEffect():
+    def getEffect(self):
         return self._effect
     
-    def getRange():
+    def getRange(self):
         return self._range
 
 

@@ -4,31 +4,31 @@ from Pos import Pos
 from Weapon import Weapon
 class Player(object):
     __metaclass__ = abc.ABCMeta
-    def __init__(self, mob, healthCap, posx, posy, index, game):
+    def __init__(self, healthCap, mob, posx, posy, index, game):
         self.__MOBILITY = mob
         self._health = healthCap
         self._pos = Pos(posx, posy)
         self._index = index
         self._game = game
         self._myString = ""
-        self._equipment = Weapon()
+        self._equipment = ""
     
     def getPos(self):
         return self._pos
     
-    def teteport(self):
-        randx = random.randint(0, self._game.D)
-        randy = random.randint(0, self._game.D)
+    def teleport(self):
+        randx = random.randint(0, self._game.D - 1)
+        randy = random.randint(0, self._game.D - 1)
         while(self._game.positionOccupied(randx, randy)):
-            randx = random.randint(0, self._game.D)
-            randy = random.randint(0, self._game.D)
+            randx = random.randint(0, self._game.D - 1)
+            randy = random.randint(0, self._game.D - 1)
         self._pos.setPos(randx, randy)
     
     def increaseHealth(self, h):
-        self._health += h
+        self._health = h + self._health
     
     def decreaseHealth(self, h):
-        self._health -= h
+        self._health = self._health - h
         if (self._health <= 0):
             self._myString = "C" + self._myString[0]
     

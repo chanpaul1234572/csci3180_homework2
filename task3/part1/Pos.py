@@ -14,9 +14,7 @@ class Pos(object):
         self.__y = y
 
     def getX(self):
-        a = self.__x
-        return a
+        return self.__x
     
     def getY(self):
-        b = self.__y
-        return b
+        return self.__y

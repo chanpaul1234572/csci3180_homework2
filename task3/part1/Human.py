@@ -1,5 +1,5 @@
-from Player import Player
-from Rifle import Rifle
+from Player import *
+from Rifle import *
 class Human(Player):
     def __init__(self, posx, posy, index, game):
         super(Human, self).__init__(80, 2, posx, posy, index, game)
@@ -8,7 +8,7 @@ class Human(Player):
     
     def teleport(self):
         super(Human, self).teleport()
-        self._equipment.enchance()
+        self._equipment.enhance()
     
     def distance(self, posx, posy):
         pass

@@ -10,10 +10,10 @@ class Obstacle(object):
         return self.__pos
     
     def teleport(self):
-        randx = random.randint(0, self.__game.D)
+        randx = random.randint(0, self.__game.D - 1)
         randy = self.__game.D - randx - 1
         while(self.__game.positionOccupied(randx, randy)):
-            randx = random.randint(0, self.__game.D)
+            randx = random.randint(0, self.__game.D - 1)
             randy = self.__game.D - randx - 1
         self.__pos.setPos(randx, randy)
         
