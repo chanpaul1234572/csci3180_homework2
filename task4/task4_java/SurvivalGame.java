@@ -129,13 +129,14 @@ public class SurvivalGame {
 				}
 				System.out.println("Everything gets teleported..");
 			}
+			
 			Player t = (Player) teleportObjects[turn];
 			// t can move only if he is alive!
 			if (t.health > 0) {
+				printBoard();
 				// dynamic binding helps
 				t.askForMove();
 				System.out.println("\n");
-				printBoard();
 			}
 			turn = (turn + 1) % n;
 			// count number of alive players

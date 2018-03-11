@@ -31,7 +31,7 @@ public class Chark extends Player {
 			this.equipment.getRange(), (this.equipment).getEffect()));
 		}
 		else if (this.equipment instanceof Wand){
-			System.out.println(String.format("You are a Chark(C%d) using Wand. (Range %d, effect: %d)", this.index, 
+			System.out.println(String.format("You are a Chark (C%d) using Wand. (Range %d, effect: %d)", this.index, 
 					this.equipment.getRange() ,this.equipment.getEffect() ));
 		}
 		super.askForMove();

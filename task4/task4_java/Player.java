@@ -81,7 +81,7 @@ public abstract class Player {
 				} else {
 					this.pos.setPos(posx, posy);
 					game.printBoard();
-					System.out.println("You can now \n1.attack\n2.End the turn");
+					System.out.println("You can now \n1.Attack \n2.End the turn");
 					if (SurvivalGame.reader.nextInt() == 1) {
 						System.out.println("Input position to attack. (Input 'x y')");
 						int attx = SurvivalGame.reader.nextInt(), atty = SurvivalGame.reader.nextInt();
@@ -113,7 +113,7 @@ public abstract class Player {
 				} else {
 					this.pos.setPos(posx, posy);
 					game.printBoard();
-					System.out.println("You can now \n1.heal\n2.End the turn");
+					System.out.println("You can now \n1.Heal\n2.End the turn");
 					if (SurvivalGame.reader.nextInt() == 1) {
 						System.out.println("Input position to heal. (Input 'x y')");
 						int attx = SurvivalGame.reader.nextInt(), atty = SurvivalGame.reader.nextInt();
