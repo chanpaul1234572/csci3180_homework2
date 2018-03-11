@@ -1,3 +1,20 @@
+#/*
+#* CSCI3180 Principles of Programming Languages
+# *
+# * --- Declaration ---
+# *
+# * I declare that the assignment here submitted is original except for source
+# * material explicitly acknowledged. I also acknowledge that I am aware of
+# * University policy and regulations on honesty in academic work, and of the
+# * disciplinary guidelines and procedures applicable to breaches of such policy
+# * and regulations, as contained in the website
+# * http://www.cuhk.edu.hk/policy/academichonesty/
+#*
+# * Assignment 2
+# * Name : Chan Paul
+# * Student ID : 1155078895
+#* Email Addr : pchan6@cse.cuhk.edu.hk
+#*/
 import sys
 import Player
 import Human
@@ -19,31 +36,18 @@ class Gomoku(object):
             print
         '''
     def createPlayer(self, symbol, playerNum):
-        if playerNum == 3:
-            self.player1 = Human.Human('O', self.gameBoard)
-            self.player2 = Human.Human('X', self.gameBoard)
-            self.gameBoard =  [[1,2,1,2,1,2,1,2,1],
-                               [1,2,1,2,1,2,1,2,1],
-                               [1,2,1,2,1,2,1,2,1],
-                               [2,1,2,1,2,1,2,1,2],
-                               [2,1,2,1,2,1,2,1,2],
-                               [2,1,2,1,2,1,2,1,2],
-                               [2,1,2,1,2,1,2,1,2],
-                               [1,2,1,2,1,2,1,2,1],
-                               [1,2,1,2,1,2,1,2,1],]
-        else:    
-            if self.turn == 1:
-                if playerNum == 1:
-                    self.player1 = Human.Human(symbol, self.gameBoard)
-                elif playerNum == 2:
-                    self.player1 = Computer.Computer(symbol, self.gameBoard)
-                self.turn = 2
-            elif self.turn == 2:
-                if playerNum == 1:
-                    self.player2 = Human.Human(symbol, self.gameBoard)
-                elif playerNum == 2:
-                    self.player2 = Computer.Computer(symbol, self.gameBoard)
-                self.turn = 1
+        if self.turn == 1:
+            if playerNum == 1:
+                self.player1 = Human.Human(symbol, self.gameBoard)
+            elif playerNum == 2:
+                self.player1 = Computer.Computer(symbol, self.gameBoard)
+            self.turn = 2
+        elif self.turn == 2:
+            if playerNum == 1:
+                self.player2 = Human.Human(symbol, self.gameBoard)
+            elif playerNum == 2:
+                self.player2 = Computer.Computer(symbol, self.gameBoard)
+            self.turn = 1
     def startGame(self):
         print_choice = lambda y : "Human" if y == 1 else "Computer"
         print("Please choose player 1 (O) :")
