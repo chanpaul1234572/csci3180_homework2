@@ -1,9 +1,11 @@
 from Pos import* 
+from Player import *
 from Human import *
 from Chark import *
-from Axe import *
+#from Axe import *
 from Obstacle import *
 from sys import *
+#from Wand import *
 class SurvivalGame(object):
     #__n = 0
     #D = 10
@@ -71,8 +73,12 @@ class SurvivalGame(object):
         self.__teleportObjects = [object() for _ in range(0, self.__n + self.__O)]
         #create N/2 Humans
         for i in range(0, self.__n / 2):
-            self.__teleportObjects[i] = Human(0, 0, i, self)
-            self.__teleportObjects[i + self.__n / 2] = Chark(0, 0, i, self)
+            if (i < self.__n / 2 - 1):
+                self.__teleportObjects[i] = Human(0, 0, i, self, 1)
+                self.__teleportObjects[i + self.__n / 2] = Chark(0, 0, i, self, 1)
+            else:
+                self.__teleportObjects[i] = Human(0, 0, i, self, 0)
+                self.__teleportObjects[i + self.__n / 2] = Chark(0, 0, i, self, 0)
         #create O obstacles. You cannot stand there
         for i in range(0, self.__O):
             self.__teleportObjects[i + self.__n] = Obstacle(0, 0, i, self)
@@ -91,15 +97,19 @@ class SurvivalGame(object):
                     elif type(obj) is Obstacle:
                         obj.teleport()
                 print "Everything gets teleported"
-            self.printBoard()
             t = self.__teleportObjects[turn]
             if t._health > 0:
+                self.printBoard()
                 t.askForMove()
                 print "\n"
             turn = (turn + 1) % self.__n
             numOfAlivePlayers = 0
             for i in range(0, self.__n):
                 if self.__teleportObjects[i]._health > 0:
+                    if type(self.__teleportObjects[i]) is Chark:
+                        self.__teleportObjects[i]._myString = "C" + str(self.__teleportObjects[i]._index)
+                    else:
+                        self.__teleportObjects[i]._myString = "H" + str(self.__teleportObjects[i]._index)
                     numOfAlivePlayers += 1
         print "Game over."
         self.printBoard()

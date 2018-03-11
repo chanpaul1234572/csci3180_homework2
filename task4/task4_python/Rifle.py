@@ -1,4 +1,6 @@
 from Weapon import *
+from Human import *
+#from Chark import *
 class Rifle(Weapon):
     __RIFLE_RANGE = 4
     __RIFLE_INIT_DAMAGE = 10
@@ -19,10 +21,13 @@ class Rifle(Weapon):
         if self._owner._pos.distance(posx, posy) <= self._range :
             player = self._owner._game.getPlayer(posx, posy)
             if player != None:
-                player.decreaseHealth(self._effect * ammoToUse)
-                self.__ammo = self.__ammo - ammoToUse
-        else:
-            print "Out of reach."
+                if isinstance(player, type(self._owner)) == False:
+                    player.decreaseHealth(self._effect * ammoToUse)
+                    self.__ammo = self.__ammo - ammoToUse
+                elif isinstance(player, type(self._owner)):
+                    print "Cannot attack same race"
+            else:
+                print "Out of reach."
     
     def enhance(self):
         self.__ammo = min(Rifle.__AMMO_LIMIT, self.__ammo + Rifle.__AMMO_RECHARGE)

@@ -1,8 +1,8 @@
 public class Wand extends Weapon {
     private static final int WAND_RANGE = 5;
-    private static final int AXE_INIT_DAMAEG = 5;
+    private static final int WAND_INIT_DAMAEG = 5;
     public Wand(Player owner){
-        super(WAND_RANGE, AXE_INIT_DAMAEG, owner);
+        super(WAND_RANGE, WAND_INIT_DAMAEG, owner);
     }
     
     public void enhance(){
@@ -28,7 +28,7 @@ public class Wand extends Weapon {
                     }
                 } 
                 else {
-                    System.out.println("Can not use to heal the different race");
+                    System.out.println("Cannot use to heal the different race");
                 }
             }
         }

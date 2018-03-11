@@ -13,9 +13,9 @@ class Axe (Weapon):
         print "You are using axe attacking " + str(posx) + " " + str(posy) + "."
         if self._owner._pos.distance(posx, posy) <= self._range:
             player = self._owner._game.getPlayer(posx, posy)
-
-            if player != None:
+            if isinstance(player, type(self._owner)) == False and player != None  :
                 player.decreaseHealth(self._effect)
-                print self._effect
+            elif isinstance(player, type(self._owner)) and player != None:
+                print "Cannot attack same race"
         else:
             print "Out of reach."
