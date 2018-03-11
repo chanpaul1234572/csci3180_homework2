@@ -84,16 +84,11 @@ class SurvivalGame(object):
         while(numOfAlivePlayers > 1):
             if turn == 0:
                 for obj in self.__teleportObjects:
-                    if type(obj) is Human:
-                        obj.teleport()
-                    elif type(obj) is Chark:
-                        obj.teleport()
-                    elif type(obj) is Obstacle:
-                        obj.teleport()
+                    obj.teleport()
                 print "Everything gets teleported"
-            self.printBoard()
             t = self.__teleportObjects[turn]
             if t._health > 0:
+                self.printBoard()
                 t.askForMove()
                 print "\n"
             turn = (turn + 1) % self.__n

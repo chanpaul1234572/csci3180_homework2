@@ -40,7 +40,7 @@ class Player(object):
         print ". Your position is ({0},{1}). Your mobility is {2}.".format(self._pos.getX(), self._pos.getY(), self.__MOBILITY)
         print "You now have following options: "
         print "1. Move"
-        print "2. Attack\heal"
+        print "2. Attack\Heal"
         print "3. End the turn"
         a = int(raw_input())
         if (a == 1):
@@ -55,15 +55,15 @@ class Player(object):
                 self._pos.setPos(posx, posy)
                 self._game.printBoard()
                 print "You can now "
-                print "1.attack\heal"
+                print "1.Attack\Heal"
                 print "2.End the turn"
                 if (int(raw_input()) == 1):
-                    print "Input position to attack\heal. (Input 'x y')"
+                    print "Input position to Attack\Heal. (Input 'x y')"
                     attx = int(raw_input())
                     atty = int(raw_input())
                     self._equipment.action(attx, atty)
         elif (a == 2):
-            print "Input position to attack\heal."
+            print "Input position to Attack\Heal."
             attx = int(raw_input())
             atty = int(raw_input())
             self._equipment.action(attx, atty)
