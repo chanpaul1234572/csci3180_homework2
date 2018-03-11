@@ -2,7 +2,7 @@ from Pos import*
 from Human import *
 from Chark import *
 from Axe import *
-from obstacle import *
+from Obstacle import *
 from sys import *
 class SurvivalGame(object):
     #__n = 0
@@ -11,9 +11,9 @@ class SurvivalGame(object):
     #__teleportObjects = object()
 
     def __init__(self):
-        self.__n = 0
-        self.D = 10
-        self.__O = 2
+        self.__n = 0      #number of player
+        self.D = 10       #dimension of board
+        self.__O = 2      #number of obstacle
         self.__teleportObjects = object()
 
 
@@ -23,7 +23,6 @@ class SurvivalGame(object):
             pos = self.__teleportObjects[i].getPos()
             printObject[pos.getX()][pos.getY()] = self.__teleportObjects[i].getName()
         for i in range(self.__n, self.__O + self.__n):
-            #this part have bug
             pos = self.__teleportObjects[i].getPos()
             printObject[pos.getX()][pos.getY()] = "O" + str(i - self.__n)
 
@@ -48,14 +47,14 @@ class SurvivalGame(object):
 
     def positionOccupied(self, randx, randy):
         for o in self.__teleportObjects:
-            if (type(o) is Player):
+            if (isinstance(o, Player)):
                 pos = o.getPos()
                 if (pos.getX() == randx and pos.getY() == randy):
                     return True
-                else:
-                    pos = o.getPos()
-                    if (pos.getX() == randx and pos.getY() == randy):
-                        return True
+            elif(isinstance(o, Obstacle)):
+                pos = o.getPos()
+                if (pos.getX() == randx and pos.getY() == randy):
+                    return True
         return False
 
     def getPlayer(self, randx, randy):
@@ -82,7 +81,6 @@ class SurvivalGame(object):
     def __gameStart(self):
         turn = 0
         numOfAlivePlayers = self.__n
-        print "numOfAlivePlayers :", self.__n
         while(numOfAlivePlayers > 1):
             if turn == 0:
                 for obj in self.__teleportObjects:

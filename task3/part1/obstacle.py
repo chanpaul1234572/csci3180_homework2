@@ -15,5 +15,6 @@ class Obstacle(object):
         while(self.__game.positionOccupied(randx, randy)):
             randx = random.randint(0, self.__game.D - 1)
             randy = self.__game.D - randx - 1
+            print "x:", randx, "y:", randy, self.__game.positionOccupied(randx, randy)
         self.__pos.setPos(randx, randy)
         

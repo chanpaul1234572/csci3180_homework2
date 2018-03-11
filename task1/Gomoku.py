@@ -12,7 +12,6 @@ class Gomoku(object):
         self.turn = 1
         w, h =9, 9
         self.gameBoard = [[0 for _ in range(w)] for _ in range(h)] 
-        self.dev = 1
         '''for i in range(h):
             print i + 1,
             for j in range(w):
